@@ -47,7 +47,7 @@
 
 ## 🧰 How to Use
 
-0. **use direclty on web** visit https://vaultsview.vercel.app/
+0. **Use direclty on web** visit https://vaultsview.vercel.app/
 
 1. **Clone this if you want your own**
    ```bash
