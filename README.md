@@ -47,19 +47,22 @@
 
 ## 🧰 How to Use
 
-0. **Use direclty on web** visit https://vaultsview.vercel.app/
+0. **Use direclty on web**
+   visit
+   ```bash
+   https://vaultsview.vercel.app/
 
-1. **Clone this if you want your own**
+2. **Clone this if you want your own**
    ```bash
    git clone https://github.com/blackyxbt/VaultsView.git
    cd VaultsView
 
-2. **Add your Alchemy key**
+3. **Add your Alchemy key**
   Open js/app.js and find this line:
    ```bash
    const ALCHEMY_API_KEY = "YOUR_API_KEY_HERE";
 
-3. **Run it locally**  
+4. **Run it locally**  
    Just open `index.html` in your browser — or go fancy:  
    ```bash
    python3 -m http.server
