@@ -49,7 +49,7 @@
 
 1. **Clone this beauty**
    ```bash
-   git clone https://github.com/rohithmoulkar/VaultsView.git
+   git clone https://github.com/blackyxbt/VaultsView.git
    cd VaultsView
 
 2. **Add your Alchemy key**
@@ -66,6 +66,8 @@
   
 4. **Enter a wallet address*** and boom — 8+ chains in your hands
 
+5. **check direclty on web** visit https://vaultsview.vercel.app/
+
 ---
 
 ## 🪄 How It Works
@@ -79,21 +81,3 @@ Basically:
 `input wallet` →  `fetch data` →  `display everything `.
 
 ---
-
-## 💡 Future Features
-
--  WalletConnect support (so you can flex your real wallet)  
--  Portfolio value summary across chains  
--  Token filtering 
--  NFT rarity
--  More chain integrations — because the multi-chains never stops expanding  
-
----
-
-## 🌉 Base Ecosystem Optimization
-
-Soon, **VaultsView** will be fully optimized for the **Base chain** — with faster endpoints, Base-native token indexing, and better cross-chain data syncing.  
-Because let’s be honest… everything’s better **on Base** 🧢  
-
----
-
