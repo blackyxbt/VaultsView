@@ -47,7 +47,9 @@
 
 ## 🧰 How to Use
 
-1. **Clone this beauty**
+0. **use direclty on web** visit https://vaultsview.vercel.app/
+
+1. **Clone this if you want your own**
    ```bash
    git clone https://github.com/blackyxbt/VaultsView.git
    cd VaultsView
@@ -65,8 +67,6 @@
   Then visit http://localhost:8000
   
 4. **Enter a wallet address*** and boom — 8+ chains in your hands
-
-5. **check direclty on web** visit https://vaultsview.vercel.app/
 
 ---
 
