@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>VaultsView — Wallet Intelligence</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="min-h-screen text-stone-100">
+    <div class="site-noise" aria-hidden="true"></div>
+    <div class="orb orb-one" aria-hidden="true"></div>
+    <div class="orb orb-two" aria-hidden="true"></div>
+
+    <main class="relative mx-auto min-h-screen max-w-7xl px-5 pb-10 pt-5 sm:px-8 lg:px-12">
+      <nav class="flex items-center justify-between border-b border-white/10 pb-5" aria-label="Main navigation">
+        <a class="brand flex items-center gap-3" href="#" aria-label="VaultsView home">
+          <span class="brand-mark">V</span>
+          <span>VAULTS<span class="brand-accent">VIEW</span></span>
+        </a>
+
+        <div class="flex items-center gap-3">
+          <span class="status-dot"><i></i> Live on-chain</span>
+          <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Switch to light theme">
+            <span class="theme-toggle-icon theme-toggle-sun">☼</span>
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-icon">☾</span>
+          </button>
+          <span class="hidden font-mono text-xs text-stone-500 sm:block">V.01 / 2025</span>
+        </div>
+      </nav>
+
+      <section class="hero grid items-end gap-10 py-14 lg:grid-cols-[1.05fr_.95fr] lg:py-20">
+        <div>
+          <p class="eyebrow">Multi-chain wallet Lookup</p>
+          <h1 class="mt-5 max-w-3xl text-5xl font-bold leading-[.92] tracking-[-.075em] text-stone-100 sm:text-7xl lg:text-8xl">
+            SEE WHAT<br /><span class="outlined-text">YOU HOLD.</span>
+          </h1>
+          <p class="mt-7 max-w-lg text-base leading-7 text-stone-400 sm:text-lg">
+            A clear view of the tokens and collectibles in any EVM wallet.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider text-stone-500">
+          </div>
+        </div>
+
+        <form id="asset-form" class="scanner-card" novalidate>
+          <div class="card-topline">
+            <span>Scan wallet</span>
+            <span class="font-mono text-[10px] text-stone-500">01 — address</span>
+          </div>
+
+          <div class="mt-7">
+            <label for="wallet-address">Wallet address</label>
+            <div class="input-shell mt-2">
+              <span class="input-glyph">⌘</span>
+              <input id="wallet-address" type="text" autocomplete="off" placeholder="0x..." />
+            </div>
+          </div>
+
+          <div class="mt-5 grid grid-cols-[1fr_auto] items-end gap-4">
+            <div>
+              <label for="chain-trigger">Network</label>
+              <div class="chain-picker mt-2">
+                <select id="chain-select" class="native-select">
+                  <option value="base">Base</option>
+                  <option value="ethereum">Ethereum</option>
+                  <option value="bnb">BNB Smart Chain</option>
+                  <option value="polygon">Polygon</option>
+                  <option value="arbitrum">Arbitrum</option>
+                  <option value="optimism">Optimism</option>
+                  <option value="scroll">Scroll</option>
+                  <option value="linea">Linea</option>
+                  <option value="zora">Zora</option>
+                  <option value="ink">Ink (experimental)</option>
+                  <option value="robinhood">Robinhood Mainnet</option>
+                  <option value="arc">Arc Mainnet</option>
+                </select>
+                <button id="chain-trigger" class="chain-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="chain-value">Base</span><span class="chain-chevron">⌄</span>
+                </button>
+                <div id="chain-menu" class="chain-menu hidden" role="listbox" aria-label="Network"></div>
+              </div>
+            </div>
+
+            <button class="scan-button" type="submit"><span>Scan assets</span><span aria-hidden="true">↗</span></button>
+          </div>
+
+          <p class="mt-6 border-t border-white/10 pt-4 font-mono text-[10px] uppercase tracking-wide text-stone-500">
+            Your address stays in your browser.
+          </p>
+        </form>
+      </section>
+
+      <section id="results-box" class="results-shell hidden" aria-live="polite">
+        <div id="loading-box" class="flex items-center justify-center gap-4 py-16">
+          <div class="spinner"></div>
+          <span class="font-mono text-xs uppercase tracking-widest text-stone-400">Reading the chain...</span>
+        </div>
+        <div id="error-box" class="error-box hidden"></div>
+
+        <div id="data-box" class="data-card hidden">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 px-5 py-4 sm:px-7">
+            <div class="flex gap-6">
+              <button id="tab-tokens" class="result-tab active" type="button">Tokens</button>
+              <button id="tab-nfts" class="result-tab" type="button">Collectibles</button>
+            </div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-stone-500">Portfolio inventory</p>
+          </div>
+          <div class="max-h-[70vh] overflow-y-auto p-2 sm:p-5">
+            <div id="token-section"></div>
+            <div id="nft-section" class="hidden"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-14 flex flex-wrap justify-between gap-4 border-t border-white/10 pt-5 font-mono text-[10px] uppercase tracking-wider text-stone-600">
+        <span>VaultsView / Wallet scanner</span><span>Built for the on-chain curious</span>
+      </footer>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
